@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This Weather App is a React-based application that provides weather information for a specified location. 
+- It uses the OpenWeatherMap API to fetch weather data and displays information like temperature, humidity, wind speed, and weather conditions. 
+- The application also displays the current date and time for the specified location in a 24-hour format.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Displays weather information including temperature, humidity, wind speed, and weather conditions.
+- Fetches weather data for a specified location.
+- Shows current date and time for the specified location in a 24-hour format.
+- Handles loading state and displays an appropriate message if the location is not found.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js and npm should be installed on your system.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/weather-app.git
+    cd weather-app
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-### `npm run build`
+3. **Set up OpenWeatherMap API Key**:
+   - Create a `utils.js` file in the `src/utils` directory.
+   - Add your OpenWeatherMap API key to the `utils.js` file:
+     ```javascript
+     export const API_KEY = 'YOUR_API_KEY_HERE';
+     ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Run the application**:
+    ```bash
+    npm start
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Code Explanation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Home.js`
 
-### `npm run eject`
+This is the main component that handles fetching and displaying weather data.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+import React, { useEffect, useState } from 'react';
+import moment from 'moment-timezone'; 
+import cloudy from '../Assets/cloudy.png';
+import sunny from '../Assets/sunny.png';
+import rainy from '../Assets/rainy.png';
+import snowy from '../Assets/snowy.png';
+import loadinggif from '../Assets/loading.gif';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+import { WiHumidity } from "react-icons/wi";
+import { FaWind } from "react-icons/fa";
+import { FaMapLocationDot } from "react-icons/fa6";
+import { BsSearch } from "react-icons/bs";
+import { API_KEY } from '../utils/utils';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
